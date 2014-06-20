@@ -4,6 +4,12 @@ class QuestionsController < ApplicationController
     @questions = Question.all.order(title: :asc)
   end
 
+  def show
+    @question = Question.find(params[:id])
+    @answer = Answer.new
+    @answers = @question.answers
+  end
+
   def new
     @question = Question.new
   end

@@ -1,0 +1,28 @@
+
+<% if @answer.errors.any?
+  @answer.errors.full_messages.each do |msg| %>
+<h3><%= msg %></h3>
+  <% end %>
+<% end %>
+
+
+<h1><%= @question.title %></h1>
+<h2><%= @question.description%></h2>
+<br />
+
+
+<% @answers.each do |a| %>
+  <p><%= a.description %></p>
+<% end %>
+
+
+<%= form_for [@question, @answer] do |f| %>
+  <p>
+    <%= f.label :description, "Your answer" %><br>
+    <%= f.text_field :description %><br>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
