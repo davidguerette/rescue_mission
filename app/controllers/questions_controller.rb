@@ -23,25 +23,28 @@ class QuestionsController < ApplicationController
       flash[:notice] = "Sorry, please try again"
       render :new
     end
-
-    def edit
-      @question = Question.find(params[:id])
-    end
-
-    def update
-      @question = Question.find(params[:id])
-      if @question.update(user_params)
-        flash[:notice] = 'Updated!'
-        redirect_to question_path(@question)
-      else
-        flash[:notice] = "Invalid"
-        render :edit
-      end
-    end
-
-
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(user_params)
+      flash[:notice] = 'Updated!'
+      redirect_to question_path(@question)
+    else
+      flash[:notice] = "Invalid"
+      render :edit
+    end
+  end
+
+  def destroy
+    @q = Question.find(params[:id])
+    @q.destroy
+    redirect_to questions_path
+  end
 
   private
 

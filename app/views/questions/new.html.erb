@@ -14,8 +14,6 @@
   </p>
 <% end %>
 
-
-<h1>Errors:</h1>
 <% if @question.errors.any?
   @question.errors.full_messages.each do |msg| %>
 <h3><%= msg %></h3>
